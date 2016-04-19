@@ -491,6 +491,7 @@ $light-color: #ecf0f1;
     &.trumbowyg-link-button { @include sprite-pos($link); }
 
     &.trumbowyg-insertImage-button { @include sprite-pos($image); }
+    &.trumbowyg-video-button { @include sprite-pos($video); }
 
     &.trumbowyg-justifyLeft-button { @include sprite-pos($left-align); }
     &.trumbowyg-justifyCenter-button { @include sprite-pos($center-align); }
@@ -539,6 +540,7 @@ $light-color: #ecf0f1;
         &.trumbowyg-link-button { @include sprite-pos($link-2x, true); }
 
         &.trumbowyg-insertImage-button { @include sprite-pos($image-2x, true); }
+        &.trumbowyg-video-button { @include sprite-pos($video-2x, true); } 
 
         &.trumbowyg-justifyLeft-button { @include sprite-pos($left-align-2x, true); }
         &.trumbowyg-justifyCenter-button { @include sprite-pos($center-align-2x, true); }
