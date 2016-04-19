@@ -146,6 +146,7 @@ btnsAdd: ['close']
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="dist/trumbowyg.js"></script>
         <script src="dist/langs/fr.min.js"></script>
+        <script src="dist/plugins/uploadvideo/trumbowyg.uploadvideo.js"></script>
         <script src="dist/plugins/base64/trumbowyg.base64.js"></script>
         <script src="dist/plugins/colors/trumbowyg.colors.js"></script>
         <script src="dist/plugins/noembed/trumbowyg.noembed.js"></script>
@@ -235,6 +236,9 @@ btnsAdd: ['close']
                     image: {
                         dropdown: ['insertImage', 'upload', 'base64', 'noembed'],
                         ico: 'insertImage'
+                    },
+                    video: {
+                      dropdown: ['uploadVid'],
                     }
                 },
                 btns: [
