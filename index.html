@@ -114,6 +114,7 @@ $('#form-content').trumbowyg({
         <script src="dist/trumbowyg.js"></script>
         <script src="dist/langs/fr.min.js"></script>
         <script src="dist/plugins/upload/trumbowyg.upload.js"></script>
+        <script src="dist/plugins/uploadvideo/trumbowyg.uploadvideo.js"></script>
         <script src="dist/plugins/base64/trumbowyg.base64.js"></script>
         <script src="dist/plugins/colors/trumbowyg.colors.js"></script>
         <script>
@@ -144,7 +145,6 @@ $('#form-content').trumbowyg({
                 }
             });
             var customizedButtonPaneTbwOptions = {
-                lang: 'fr',
                 closable: true,
                 fixedBtnPane: true,
                 btnsDef: {
@@ -156,6 +156,9 @@ $('#form-content').trumbowyg({
                     image: {
                         dropdown: ['insertImage', 'upload', 'base64'],
                         ico: 'insertImage'
+                    },
+                    video: {
+                      dropdown: ['uploadVid'],
                     }
                 },
                 btns: ['viewHTML',
@@ -164,7 +167,8 @@ $('#form-content').trumbowyg({
                     '|', 'align',
                     '|', 'btnGrp-lists',
                     '|', 'image',
-                    '|', 'foreColor', 'backColor']
+                    '|', 'foreColor', 'backColor',
+                    '|', 'video']
             };
             $('#customized-buttonpane')
             .trumbowyg(customizedButtonPaneTbwOptions)
