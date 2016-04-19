@@ -856,6 +856,26 @@
             });
         },
 
+        insertVideo: function(){
+          var t = this;
+          t.saveSelection();
+          t.openModalInsert(t.lang.insertVideo, {
+              url: {
+                  label: 'URL',
+                  value: 'http://',
+                  required: true
+              },
+              alt: {
+                  label: t.lang.description,
+                  value: t.selection
+              }
+          }, function(v){ // v are values
+              t.execCmd('insertVideo', v.url);
+              $('video[src="'+v.url+'"]:not([alt])', t.$box).attr('alt', v.alt);
+              return true;
+          });
+        },
+
 
         /*
          * Call method of trumbowyg if exist
@@ -878,6 +898,9 @@
                         param = null;
                     else if(cmd == 'formatBlock' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0))
                         param = '<' + param + '>';
+                    else if(cmd == 'insertVideo')
+                        cmd = 'insertHTML';
+                        param = '<video controls src=' + param + '></video>';
 
                     t.doc.execCommand(cmd, false, param);
                 }
