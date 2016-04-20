@@ -909,9 +909,10 @@ jQuery.trumbowyg = {
                         param = null;
                     else if(cmd == 'formatBlock' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0))
                         param = '<' + param + '>';
-                    else if(cmd == 'insertVideo')
+                    else if(cmd == 'insertVideo') {
                         cmd = 'insertHTML';
                         param = '<video controls src=' + param + '></video>';
+                    }
 
                     t.doc.execCommand(cmd, false, param);
                 }
