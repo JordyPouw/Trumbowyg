@@ -32,8 +32,9 @@ jQuery.trumbowyg = {
             unorderedList:  "Unordered list",
             orderedList:    "Ordered list",
 
-            insertImage:    "Insert Image",
-            insertVideo:    "Insert Video",
+            insertImage:    "Insert image",
+            insertVideo:    "Insert video",
+            embedVideo:     "Embed video",
             link:           "Link",
             createLink:     "Insert link",
             unlink:         "Remove link",
@@ -240,6 +241,8 @@ jQuery.trumbowyg = {
                 unlink: {},
 
                 insertImage: {},
+                insertVideo: {},
+                embedVideo: {},
 
                 justifyLeft: {},
                 justifyCenter: {},
@@ -887,6 +890,20 @@ jQuery.trumbowyg = {
           });
         },
 
+        embedVideo: function(){
+          var t = this;
+          t.saveSelection();
+          t.openModalInsert(t.lang.embedVideo, {
+              embed: {
+                  label: 'Embed',
+                  required: true
+              }
+          }, function(v){ // v are values
+              t.execCmd('embedVideo', v.embed);
+              return true;
+          });
+        },
+
 
         /*
          * Call method of trumbowyg if exist
@@ -912,6 +929,10 @@ jQuery.trumbowyg = {
                     else if(cmd == 'insertVideo') {
                         cmd = 'insertHTML';
                         param = '<video controls src=' + param + '></video>';
+                    }
+                    else if(cmd == 'embedVideo') {
+                        cmd = 'insertHTML';
+                        param = param;
                     }
 
                     t.doc.execCommand(cmd, false, param);
