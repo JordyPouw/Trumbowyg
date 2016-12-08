@@ -98,6 +98,10 @@
                                                 tbw.lang[data.message]
                                             );
                                         }
+
+                                        if ( $.trumbowyg.upload.success && typeof $.trumbowyg.upload.success == 'function' ) {
+                                          $.trumbowyg.upload.success(data);
+                                        }
                                     },
                                     error: function(){
                                         tbw.addErrorOnModalField(
