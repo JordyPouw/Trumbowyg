@@ -862,7 +862,7 @@ jQuery.trumbowyg = {
                 }
             }, function(v){ // v are values
                 t.execCmd('insertImage', v.url);
-                $('img[src="'+v.url+'"]:not([alt])', t.$box).attr('alt', v.alt);
+                $('img[src="'+v.url+'"]:not([alt])', t.$box).attr('alt', v.alt).attr('data-id', id);
                 return true;
             });
         },
