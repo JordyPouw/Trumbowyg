@@ -264,7 +264,10 @@ jQuery.trumbowyg = {
                 link: {
                     dropdown: ['createLink', 'unlink']
                 }
-            }
+            },
+
+            // Remove embeds callback function
+            removeEmbeds: function () {}
         }, opts);
 
         if(t.o.semantic && !opts.btns)
