@@ -893,17 +893,13 @@
                 try {
                     cmd(param, t);
                 } catch(e2){
-                    //t.$editor.focus();
-                    if(cmd == 'insertHorizontalRule')
-                        param = null;
-                    else if(cmd == 'formatBlock' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0))
-                        param = '<' + param + '>';
-                    else if(cmd == 'insertVideo') {
-                        cmd = 'insertHTML';
-                        param = '<video controls src=' + param + '></video>';
+                    if ( cmd == 'insertHorizontalRule' ) {
+                        t.doc.execCommand(cmd, false, null);
+                    } else if ( cmd == 'formatBlock' && ( navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0 ) ) {
+                        t.doc.execCommand(cmd, false, '<' + param + '>');
+                    } else if ( cmd == 'insertVideo' ) {
+                        t.doc.execCommand('insertHTML', false, '<video controls src=' + param + '></video>');
                     }
-
-                    t.doc.execCommand(cmd, false, param);
                 }
             }
             t.syncCode();
