@@ -136,8 +136,8 @@ gulp.task("styles", ["sprites"], function(){
       sass: paths.styles.sass,
       includePaths: paths.styles.includePaths
     }))
-    .pipe($.autoprefixer(["last 1 version", "> 1%", "ff >= 20", "ie >= 8", "opera >= 12", "Android >= 2.2"], { cascade: true }))
     .pipe($.header(banner, { pkg: pkg, description: "Default stylesheet for Trumbowyg editor" }))
+    .pipe($.autoprefixer({ browsers: ['last 5 versions'] }))
     .pipe(gulp.dest("dist/ui/"))
     .pipe($.size({ title: "trumbowyg.css" }))
     .pipe($.rename({ suffix: ".min" })) // génère une version minimifié
