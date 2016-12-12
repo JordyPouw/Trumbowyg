@@ -273,6 +273,9 @@
         else if(opts && opts.btns)
             t.o.btns = opts.btns;
 
+        // Embedded images
+        t.embedIds = [];
+
         t.init();
     };
 
@@ -767,7 +770,26 @@
                 t.height = t.$editor.css('height');
                 t.$e.css({ height: t.height });
             }
+            t.checkEmbeds();
         },
+
+
+        // Keep track of embedded images
+        // Update when an image is removed
+        checkEmbeds: function () {
+            var t = this;
+            var embedIds = [];
+            t.$editor.find('*[data-embed-imageid]').each(function () {
+                embedIds.push($(this).data('embed-imageid'));
+            });
+            for ( var i = 0; i < t.embedIds.length; i++ ) {
+                if ( embedIds.indexOf(t.embedIds[i]) < 0 ) {
+                    t.o.removeEmbeds(t.embedIds[i]);
+                }
+            }
+            t.embedIds = $.unique(embedIds);
+        },
+
 
         // Analyse and update to semantic code
         // @param force : force to sync code from textarea
