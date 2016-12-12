@@ -7,6 +7,8 @@
 /src/ui/sass/_sprite*
 /plugins/**/ui/sass/_sprite*
 
+# Npm log
+npm-debug.log
 
 # Windows image file caches
 Thumbs.db
