@@ -882,7 +882,7 @@
          * else try to call anonymous function
          * and finaly native execCommand
          */
-        execCmd: function(cmd, param){
+        execCmd: function(cmd, param, attrs){
             var t = this;
             if(cmd != 'dropdown')
                 t.$editor.focus();
@@ -897,6 +897,8 @@
                         t.doc.execCommand(cmd, false, null);
                     } else if ( cmd == 'formatBlock' && ( navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0 ) ) {
                         t.doc.execCommand(cmd, false, '<' + param + '>');
+                    } else if ( cmd == 'insertImage' ) {
+                        t.doc.execCommand('insertHTML', false, '<img src=' + param + ' data-id=' + attrs.id + '></img>');
                     } else if ( cmd == 'insertVideo' ) {
                         t.doc.execCommand('insertHTML', false, '<video controls src=' + param + '></video>');
                     }
