@@ -930,13 +930,16 @@ jQuery.trumbowyg = {
                     cmd(param, t);
                 } catch(e2){
                     if ( cmd == 'insertHorizontalRule' ) {
-                        t.doc.execCommand(cmd, false, null);
+                        param = null;
                     } else if ( cmd == 'formatBlock' && ( navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0 ) ) {
-                        t.doc.execCommand(cmd, false, '<' + param + '>');
+                        param = '<' + param + '>';
                     } else if ( cmd == 'insertImage' ) {
-                        t.doc.execCommand('insertHTML', false, '<img src=' + param + ' data-embed-imageID=' + attrs.id + '>');
+                        attrs = attrs || { id: '' };
+                        cmd = 'insertHTML';
+                        param = '<img src=' + param + ' data-embed-imageID=' + attrs.id + '>';
                     } else if ( cmd == 'insertVideo' ) {
-                        t.doc.execCommand('insertHTML', false, '<video controls src=' + param + '></video>');
+                        cmd = 'insertHTML';
+                        param = '<video controls src=' + param + '></video>';
                     }
 
                     t.doc.execCommand(cmd, false, param);
