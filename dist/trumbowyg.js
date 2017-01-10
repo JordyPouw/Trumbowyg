@@ -411,6 +411,8 @@ jQuery.trumbowyg = {
                     }).css({
                         'width': (v.width + 'px')
                     });
+
+                    return true;
                 });
                 e.stopPropagation();
             })
