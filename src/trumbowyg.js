@@ -45,7 +45,8 @@
             required:       "Required",
             description:    "Description",
             title:          "Title",
-            text:           "Text"
+            text:           "Text",
+            width:          "Width"
         }
     },
 
