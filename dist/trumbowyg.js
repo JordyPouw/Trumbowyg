@@ -396,11 +396,17 @@ jQuery.trumbowyg = {
                     alt: {
                         label: 'description',
                         value: $img.attr('alt')
+                    },
+                    width: {
+                        label: 'width',
+                        type : 'number',
+                        value: $img.attr('width')
                     }
                 }, function(v){
                     $img.attr({
                         src: v.url,
-                        alt: v.alt
+                        alt: v.alt,
+                        width: v.width
                     });
                 });
                 e.stopPropagation();
