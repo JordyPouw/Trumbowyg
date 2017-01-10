@@ -407,6 +407,8 @@ jQuery.trumbowyg = {
                         src: v.url,
                         alt: v.alt,
                         width: v.width
+                    }).css({
+                        'width': (v.width + 'px')
                     });
                 });
                 e.stopPropagation();
