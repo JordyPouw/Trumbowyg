@@ -463,6 +463,69 @@ $light-color: #ecf0f1;
 }
 
 
+/*
+ * Image align modal functionality.
+ */
+.trumbowyg-modal .label {
+  display: block;
+  position: relative;
+  margin: 15px 12px;
+  height: 27px;
+  line-height: 27px;
+  overflow: hidden;
+
+  .trumbowyg-input-infos {
+    display: block;
+    text-align: left;
+    height: 25px;
+    line-height: 25px;
+    transition: all .15s;
+  }
+
+  .trumbowyg-input-infos span {
+    display: block;
+    color: #859fa5;
+    background: inherit;
+    border: inherit;
+    padding: 0 2%;
+    width: 19.5%;
+  }
+}
+
+.trumbowyg-modal .aligns {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72%;
+  height: 25px;
+  margin: 0 0 0 23%;
+  padding: 0 2% 0 0;
+  background: transparent;
+  line-height: 25px;
+  text-align: left;
+  transition: all 0.15s;
+}
+
+.trumbowyg-modal .aligns__align {
+  display: inline-block;
+  height: auto;
+  margin: 0;
+  margin-right: 20px;
+  line-height: 1;
+}
+
+.trumbowyg-modal .aligns__align input {
+  position: static;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  margin-right: 5px;
+  border: 0;
+  padding: 0;
+  line-height: 1;
+}
+
 
 /*
  * Buttons icons
