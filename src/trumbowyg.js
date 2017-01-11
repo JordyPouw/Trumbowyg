@@ -47,7 +47,11 @@
             title:          "Title",
             text:           "Text",
             width:          "Width",
-            align:          "Align"
+            align:          "Align",
+            none:           "None",
+            left:           "Left",
+            center:         "Center",
+            right:          "Right"
         }
     },
 
@@ -1084,7 +1088,7 @@
 
                 if (fd.type === 'radio') {
                   var radioButtons = '';
-                  var aligns = ['none', 'left', 'middle', 'right'];
+                  var aligns = [lg['none'], lg['left'], lg['center'], lg['right']];
 
                   $.each(aligns, function(i, v) {
                     var checked = (fd.value == v ? 'checked' : '');
