@@ -1103,7 +1103,7 @@
 
                   $(document).on('change', '.aligns__align input', function() {
                     if ($(this).is(':checked')){
-                      var val = $(this).val()
+                      var val = $(this).val();
                       $('#align').val(val);
                     }
                   });
