@@ -57,7 +57,8 @@ jQuery.trumbowyg = {
             description:    "Description",
             title:          "Title",
             text:           "Text",
-            width:          "Width"
+            width:          "Width",
+            align:          "Align"
         }
     },
 
@@ -402,12 +403,18 @@ jQuery.trumbowyg = {
                         label: 'width',
                         type : 'number',
                         value: $img.attr('width')
+                    },
+                    align: {
+                        align: 'align',
+                        type: 'radio',
+                        value: $img.attr('align')
                     }
                 }, function(v){
                     $img.attr({
                         src: v.url,
                         alt: v.alt,
-                        width: v.width
+                        width: v.width,
+                        align: v.align
                     }).css({
                         'width': (v.width + 'px')
                     });
@@ -1086,7 +1093,35 @@ jQuery.trumbowyg = {
                     fd.patternError = lg.invalidUrl;
                 }
 
-                html += '<label><input type="'+(fd.type || 'text')+'" name="'+fd.name+'" value="'+(fd.value || '')+'"><span class="'+pfx+'input-infos"><span>'+label+'</span></span></label>';
+                if (fd.type === 'radio') {
+                  var radioButtons = '';
+                  var aligns = ['none', 'left', 'middle', 'right'];
+
+                  $.each(aligns, function(i, v) {
+                    var checked = (fd.value == v ? 'checked' : '');
+
+                    radioButtons += '<label class="aligns__align">' +
+                                      '<input type="radio" name="align-choice" value="' + v + '"' + checked + '>' + v +
+                                    '</label>';
+                  });
+
+                  html += '<div class="label">' +
+                            '<div class="aligns">' + radioButtons + '</div>' +
+                            '<span class="'+pfx+'input-infos"><span>'+label+'</span></span>' +
+                          '</div>';
+
+                  html += '<input id="align" type="hidden" name="' + fd.name + '" value="' + (fd.value || '') + '">';
+
+                  $(document).on('change', '.aligns__align input', function() {
+                    if ($(this).is(':checked')){
+                      var val = $(this).val()
+                      $('#align').val(val);
+                    }
+                  });
+                } else {
+                    html += '<label><input type="'+(fd.type || 'text')+'" name="'+fd.name+'" value="'+(fd.value || '')+'"><span class="'+pfx+'input-infos"><span>'+label+'</span></span></label>';
+                }
+
             }
 
             return t.openModal(title, html)
