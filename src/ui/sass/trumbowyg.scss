@@ -366,10 +366,28 @@ $light-color: #ecf0f1;
         max-width: 100%;
     }
     video,
+
     img {
         height: auto;
+        cursor: move;
     }
-    img { cursor: move; }
+
+    img[align="left"],
+    img[align="links"] {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    img[align="right"],
+    img[align="rechts"] {
+        float: right;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    img[align="center"],
+    img[align="gecentreerd"] { margin: 0 auto; }
 
     &.trumbowyg-reset-css {
         background: #FEFEFE !important;

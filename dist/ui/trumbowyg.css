@@ -288,10 +288,24 @@
 
 .trumbowyg-editor video,
 .trumbowyg-editor img {
-  height: auto; }
-
-.trumbowyg-editor img {
+  height: auto;
   cursor: move; }
+
+.trumbowyg-editor img[align="left"],
+.trumbowyg-editor img[align="links"] {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+
+.trumbowyg-editor img[align="right"],
+.trumbowyg-editor img[align="rechts"] {
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px; }
+
+.trumbowyg-editor img[align="center"],
+.trumbowyg-editor img[align="gecentreerd"] {
+  margin: 0 auto; }
 
 .trumbowyg-editor.trumbowyg-reset-css {
   background: #FEFEFE !important;
