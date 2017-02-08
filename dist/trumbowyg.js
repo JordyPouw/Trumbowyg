@@ -1070,6 +1070,9 @@ jQuery.trumbowyg = {
             t.$overlay.off();
 
             var $modalBox = $('.' + pfx + 'modal-box', t.$box);
+            var $btn = $modalBox.find('button[type="submit"]');
+
+            $btn.prop('disabled', false);
 
             $modalBox.animate({
                 top: '-' + $modalBox.css('height')
@@ -1131,8 +1134,11 @@ jQuery.trumbowyg = {
             return t.openModal(title, html)
             .on(pfx + 'confirm', function(){
                 var $form = $(this).find('form'),
+                    $btn = $(this).find('button[type="submit"]'),
                     valid = true,
                     v = {}; // values
+
+                $btn.prop('disabled', true);
 
                 for(var f in fields){
                     var $field = $('input[name="'+f+'"]', $form);
@@ -1141,9 +1147,11 @@ jQuery.trumbowyg = {
 
                     // Validate value
                     if(fields[f].required && v[f] === ''){
+                        $btn.prop('disabled', false);
                         valid = false;
                         t.addErrorOnModalField($field, t.lang.required);
                     } else if(fields[f].pattern && !fields[f].pattern.test(v[f])){
+                        $btn.prop('disabled', false);
                         valid = false;
                         t.addErrorOnModalField($field, fields[f].patternError);
                     }

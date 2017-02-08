@@ -81,9 +81,9 @@
                                     contentType:    false,
 
                                     progressUpload: function(e){
-                                        $('.' + pfx + 'progress-bar').stop().animate({
-                                            width: Math.round(e.loaded * 100 / e.total) + '%'
-                                        }, 200);
+                                      $('.' + pfx + 'progress-bar').width(
+                                        Math.round(e.loaded * 100 / e.total) + '%'
+                                      );
                                     },
 
                                     success: function(data){
@@ -124,7 +124,7 @@
 
 
     function addXhrProgressEvent(){
-        if (!$.trumbowyg && !$.trumbowyg.addedXhrProgressEvent) {   // Avoid adding progress event multiple times
+        if ($.trumbowyg && !$.trumbowyg.addedXhrProgressEvent) {   // Avoid adding progress event multiple times
             var originalXhr = $.ajaxSettings.xhr;
             $.ajaxSetup({
                 xhr: function() {
