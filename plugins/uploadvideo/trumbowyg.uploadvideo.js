@@ -59,7 +59,7 @@
               // callback.
               function(){
                 var data = new FormData();
-                
+
                 data.append('fileToUpload', file);
 
                 if($('.' + pfx + 'progress', $modal).length === 0) {
@@ -76,16 +76,16 @@
                   processData:    false,
                   contentType:    false,
 
-                  progressUpload: function (e) {
-                    $('.' + pfx + 'progress-bar').stop().animate({
-                      width: Math.round(e.loaded * 100 / e.total) + '%'
-                    }, 200);
+                  progressUpload: function(e){
+                    $('.' + pfx + 'progress-bar').width(
+                      Math.round(e.loaded * 100 / e.total) + '%'
+                    );
                   },
 
                   success: function (data) {
                     if(data.message == "uploadSuccess") {
                       tbw.execCmd('insertVideo', data.file);
-                      
+
                       setTimeout(function () {
                         tbw.closeModal();
                       }, 250);
@@ -116,16 +116,15 @@
     }
   });
 
-  function addXhrProgressEvent () {
-    // Avoid adding progress event multiple times
-    if (!$.trumbowyg && !$.trumbowyg.addedXhrProgressEvent) {
+  function addXhrProgressEvent(){
+    if ($.trumbowyg && !$.trumbowyg.addedXhrProgressEvent) {   // Avoid adding progress event multiple times
       var originalXhr = $.ajaxSettings.xhr;
-      
+
       $.ajaxSetup({
         xhr: function () {
           var req  = originalXhr(),
             that = this;
-          
+
           if(req && typeof req.upload == "object" && that.progressUpload !== undefined) {
             req.upload.addEventListener("progress", function (e) {
               that.progressUpload(e);
