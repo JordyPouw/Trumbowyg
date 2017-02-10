@@ -964,7 +964,7 @@ jQuery.trumbowyg = {
                           var sel = window.getSelection(),
                               range = sel.getRangeAt(0),
                               frag = document.createDocumentFragment(),
-                              img = document.createElement('video');
+                              img = document.createElement('img');
 
                           $(img).attr({
                             src: param,
