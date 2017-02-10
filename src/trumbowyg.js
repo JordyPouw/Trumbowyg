@@ -946,9 +946,48 @@ jQuery.trumbowyg = {
                         param = '<' + param + '>';
                     } else if ( cmd == 'insertImage' ) {
                         attrs = attrs || { id: '' };
+
+                        var supported = document.queryCommandSupported('insertHTML');
+
+                        if (!supported) {
+                          var sel = window.getSelection(),
+                              range = sel.getRangeAt(0),
+                              frag = document.createDocumentFragment(),
+                              img = document.createElement('video');
+
+                          $(img).attr({
+                            src: param,
+                            'data-embed-imageid': attrs.id,
+                          });
+
+                          frag.appendChild(img);
+                          range.insertNode(frag);
+                          t.syncCode();
+                          return;
+                        }
+
                         cmd = 'insertHTML';
                         param = '<img src=' + param + ' data-embed-imageID=' + attrs.id + '>';
                     } else if ( cmd == 'insertVideo' ) {
+                        var supported = document.queryCommandSupported('insertHTML');
+
+                        if (!supported) {
+                          var sel = window.getSelection(),
+                              range = sel.getRangeAt(0),
+                              frag = document.createDocumentFragment(),
+                              video = document.createElement('video');
+
+                          $(video).attr({
+                            controls: true,
+                            src: param,
+                          });
+
+                          frag.appendChild(video);
+                          range.insertNode(frag);
+                          t.syncCode();
+                          return;
+                        }
+
                         cmd = 'insertHTML';
                         param = '<video controls src=' + param + '></video>';
                     }
