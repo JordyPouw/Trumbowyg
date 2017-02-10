@@ -59,7 +59,7 @@
               // callback.
               function(){
                 var data = new FormData();
-  
+
                 data.append('fileToUpload', file);
 
                 if($('.' + pfx + 'progress', $modal).length === 0) {
