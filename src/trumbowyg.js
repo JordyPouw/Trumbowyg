@@ -989,7 +989,12 @@ jQuery.trumbowyg = {
                         }
 
                         cmd = 'insertHTML';
-                        param = '<video controls src=' + param + '></video>';
+
+                        if (qollapVars.vid_convert_img_url) {
+                          param = '<video controls src=' + param + ' poster="' + qollapVars.vid_convert_img_url + '"></video>';
+                        } else {
+                          param = '<video controls src=' + param + '></video>';
+                        }
                     }
 
                     t.doc.execCommand(cmd, false, param);
