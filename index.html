@@ -3,62 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Trumbowyg by Alex-D</title>
-        <base href="/test/base/url/">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <style>
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: #f4f7fa;
-                font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-            }
-
-            header {
-                text-align: center;
-            }
-
-            .container {
-                max-width: 960px;
-                margin: 0 auto;
-            }
-
-            .dark-section {
-                background: #111;
-                color: #ddd;
-                margin-top: 50px;
-                padding: 50px 0 100px;
-            }
-
-            .dark-section .title {
-                font-weight: normal;
-                text-align: center;
-                font-size: 32px;
-                margin: 20px 0 50px;
-            }
-
-            .form-submit {
-                background: transparent;
-                border: 1px solid #555;
-                color: #ccc;
-                padding: 7px 13px;
-                margin-right: 17px;
-                float: right;
-            }
-
-            h2 {
-                font-size: 26px;
-            }
-
-            h1 + pre,
-            h2 + pre,
-            h3 + pre,
-            h4 + pre {
-                margin-top: -20px;
-            }
-        </style>
-        <link rel="stylesheet" href="/dist/ui/trumbowyg.css">
-        <link rel="stylesheet" href="/dist/plugins/colors/ui/trumbowyg.colors.css">
+        <link rel="stylesheet" href="examples/css/main.css">
+        <link rel="stylesheet" href="dist/ui/trumbowyg.css">
+        <link rel="stylesheet" href="dist/plugins/colors/ui/trumbowyg.colors.css">
     </head>
     <body>
         <div class="container">
@@ -91,7 +39,7 @@ $('#default-editor').trumbowyg();
                 </p>
                 <code><pre>
 $('#simple-editor').trumbowyg({
-    btns: ['strong', 'em', 'del']
+btns: [jQuery.trumbowyg.btnsGrps.semantic]
 });
                 </pre></code>
             </div>
@@ -101,6 +49,11 @@ $('#simple-editor').trumbowyg({
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, aliquam, minima fugiat placeat provident optio nam reiciendis eius beatae quibusdam!
                 </p>
+                <code><pre>
+$('#simple-editor').trumbowyg({
+btns: [jQuery.trumbowyg.btnsGrps.semantic]
+});
+                </pre></code>
             </div>
 
             <div id="customized-buttonpane">
@@ -109,7 +62,7 @@ $('#simple-editor').trumbowyg({
                     The text is derived from Cicero's De Finibus Bonorum et Malorum (On the Ends of Goods and Evils, or alternatively [About] The Purposes of Good and Evil ). The original passage began: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit (Translation: &quot;Neither is there anyone who loves grief itself since it is grief and thus wants to obtain it&quot;).
                 </p>
                 <p style="text-align: center;">
-                    <img src="https://raw.githubusercontent.com/Alex-D/Trumbowyg/develop/banner.jpg" alt="Trumbowyg logo">
+                    <img src="http://alex-d.github.io/Trumbowyg/img/logo-tbw.png" alt="Trumbowyg logo">
                 </p>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, minima, asperiores libero architecto sequi fugit dolore sunt in officiis facere ut quaerat ullam laudantium delectus aliquam tenetur alias! Ea, nisi, est earum temporibus dolores quas qui repellendus aliquid voluptatibus tempore facilis eligendi omnis reiciendis nihil ullam quo dolorem nam deleniti. Fugit dignissimos dolorum dolore voluptate repudiandae recusandae debitis. Neque, adipisci, maiores magni aliquam molestiae ex natus minus quod tempora nemo debitis eum laboriosam voluptatum ut architecto animi nobis vero quis dolore eaque! Corporis, dolore, illum, autem in eum ea doloribus ut consequuntur modi et ullam adipisci blanditiis corrupti ab voluptate.
@@ -141,7 +94,9 @@ btnsDef: {
 },
 btns: ['viewHTML',
     ['formatting'],
+    ['btnGrp-test'],
     ['align'],
+    ['btnGrp-lists'],
     ['image'],
     ['preformatted'],
     'fullscreen', 'close']
@@ -157,25 +112,20 @@ btns: ['viewHTML',
                 </p>
                 <code><pre>
 $('#form-content').trumbowyg({
-    lang: 'fr',
-    mobile: true,
-    fixedBtnPane: true,
-    fixedFullWidth: true,
-    semantic: true,
-    resetCss: true,
-    autoAjustHeight: true,
-    autogrow: true
+lang: 'fr',
+mobile: true,
+fixedBtnPane: true,
+fixedFullWidth: true,
+semantic: true,
+resetCss: true,
+autoAjustHeight: true,
+autogrow: true,
+btnsAdd: ['close']
 });
                 </pre></code>
             </textarea>
 
             <textarea id="empty-textarea" cols="30" rows="10" required></textarea>
-
-            <textarea id="disabled-textarea" cols="30" rows="10" disabled>
-                Disabled textarea
-            </textarea>
-            <button id="enable-disabled-textarea">Enable</button>
-            <button id="disable-disabled-textarea">Disable</button>
 
             <div id="dynamic-iframe-example"></div>
         </div>
@@ -193,28 +143,19 @@ $('#form-content').trumbowyg({
                 </form>
             </div>
         </div>
-
-        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="/dist/trumbowyg.js"></script>
-        <script src="/dist/langs/fr.min.js"></script>
-        <script src="/dist/plugins/base64/trumbowyg.base64.js"></script>
-        <script src="/dist/plugins/colors/trumbowyg.colors.js"></script>
-        <script src="/dist/plugins/noembed/trumbowyg.noembed.js"></script>
-        <script src="/dist/plugins/pasteimage/trumbowyg.pasteimage.js"></script>
-        <script src="/dist/plugins/template/trumbowyg.template.js"></script>
-        <script src="/dist/plugins/preformatted/trumbowyg.preformatted.js"></script>
-        <script src="/dist/plugins/ruby/trumbowyg.ruby.js"></script>
-        <script src="/dist/plugins/upload/trumbowyg.upload.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="dist/trumbowyg.js"></script>
+        <script src="dist/langs/fr.min.js"></script>
+        <script src="dist/plugins/uploadvideo/trumbowyg.uploadvideo.js"></script>
+        <script src="dist/plugins/base64/trumbowyg.base64.js"></script>
+        <script src="dist/plugins/colors/trumbowyg.colors.js"></script>
+        <script src="dist/plugins/noembed/trumbowyg.noembed.js"></script>
+        <script src="dist/plugins/pasteimage/trumbowyg.pasteimage.js"></script>
+        <script src="dist/plugins/preformatted/trumbowyg.preformatted.js"></script>
+        <script src="dist/plugins/upload/trumbowyg.upload.js"></script>
         <script>
-            $(document).on('keydown', function (e) {
-                if (e.which === 27) {
-                    console.log('ESCAPE');
-                }
-            });
-
-
             /** Default editor configuration **/
-            $('#default-editor, #empty-textarea, #disabled-textarea')
+            $('#default-editor, #empty-textarea')
             .trumbowyg()
             .on('dblclick', function(){
                 $(this).trumbowyg();
@@ -223,18 +164,11 @@ $('#form-content').trumbowyg({
                 console.log(e.type);
             });
 
-            $('#enable-disabled-textarea').click(function () {
-                $('#disabled-textarea').trumbowyg('enable');
-            });
-            $('#disable-disabled-textarea').click(function () {
-                $('#disabled-textarea').trumbowyg('disable');
-            });
-
 
             /** Default editor configuration **/
             $('#simple-editor')
             .trumbowyg({
-                btns: ['strong', 'em', 'del']
+                btns: ['btnGrp-semantic']
             })
             .on('dblclick', function(){
                 $(this).trumbowyg();
@@ -246,8 +180,7 @@ $('#form-content').trumbowyg({
                 serverPath: 'https://api.imgur.com/3/image',
                 fileFieldName: 'image',
                 headers: {'Authorization': 'Client-ID 9e57cb1c4791cea'},
-                urlPropertyName: 'data.link',
-                imageWidthModalEdit: true
+                urlPropertyName: 'data.link'
             };
 
             /** Full flat button pane **/
@@ -266,24 +199,12 @@ $('#form-content').trumbowyg({
                     ['removeformat'],
 
                     ['upload', 'base64', 'noembed'],
-                    ['ruby'],
                     ['foreColor', 'backColor'],
                     ['preformatted'],
-                    ['template'],
                     ['fullscreen', 'close']
                 ],
                 plugins: {
-                    upload: uploadOptions,
-                    templates: [
-                        {
-                            name: 'Template 1',
-                            html: '<p>I am a template!</p>'
-                        },
-                        {
-                            name: 'Template 2',
-                            html: '<p>I am a different template!</p>'
-                        }
-                    ]
+                    upload: uploadOptions
                 }
             });
 
@@ -315,20 +236,22 @@ $('#form-content').trumbowyg({
                     image: {
                         dropdown: ['insertImage', 'upload', 'base64', 'noembed'],
                         ico: 'insertImage'
+                    },
+                    video: {
+                      dropdown: ['uploadVid'],
                     }
                 },
                 btns: [
                     ['viewHTML'],
                     ['formatting'],
+                    'btnGrp-test',
                     ['align'],
+                    'btnGrp-lists',
                     ['image'],
                     ['foreColor', 'backColor'],
                     ['preformatted'],
                     ['fullscreen', 'close']
-                ],
-                plugins: {
-                    upload: uploadOptions
-                }
+                ]
             };
             $('#customized-buttonpane')
             .trumbowyg(customizedButtonPaneTbwOptions)
@@ -348,17 +271,16 @@ $('#form-content').trumbowyg({
                 resetCss: true,
                 removeformatPasted: true,
                 tagsToRemove: ['script', 'style'],
-                imageWidthModalEdit: true,
 
                 autogrow: true,
-                autogrowOnEnter: true,
 
                 btnsDef: {
                     strong: {
                         fn: 'bold',
                         key: 'G'
                     }
-                }
+                },
+                btnsAdd: ['close']
             };
             $('#form-content')
             .trumbowyg(formTbwOptions)
@@ -391,7 +313,7 @@ $('#form-content').trumbowyg({
                 var contextIframe = $iframe.contents()[0];
                 // Set the style on the head of the iframe.
                 $('head', contextIframe).append($('<link>', {
-                    href: '/dist/ui/trumbowyg.css',
+                    href: 'dist/ui/trumbowyg.css',
                     rel: 'stylesheet'
                 }));
                 // Set the content to be editable.
@@ -407,9 +329,7 @@ $('#form-content').trumbowyg({
 
             /** Editor with placeholder **/
             $('#placeholder-editor')
-            .trumbowyg({
-              autogrowOnEnter: true,
-            })
+            .trumbowyg()
             .on('dblclick', function(){
                 $(this).trumbowyg();
             })

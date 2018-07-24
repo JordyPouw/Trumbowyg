@@ -20,16 +20,14 @@
                             var items = (pasteEvent.originalEvent || pasteEvent).clipboardData.items,
                                 reader;
 
-                            for (var i = items.length - 1; i >= 0; i -= 1) {
-                                if (items[i].type.match(/^image\//)) {
-                                    reader = new FileReader();
-                                    /* jshint -W083 */
-                                    reader.onloadend = function (event) {
-                                        trumbowyg.execCmd('insertImage', event.target.result, undefined, true);
-                                    };
-                                    /* jshint +W083 */
-                                    reader.readAsDataURL(items[i].getAsFile());
-                                }
+                            if (items[0].type.match(/^image\//)) {
+                                reader = new FileReader();
+                                /* jshint -W083 */
+                                reader.onloadend = function (event) {
+                                    trumbowyg.execCmd('insertImage', event.target.result, undefined, true);
+                                };
+                                /* jshint +W083 */
+                                reader.readAsDataURL(items[0].getAsFile());
                             }
                         } catch (c) {
                         }
